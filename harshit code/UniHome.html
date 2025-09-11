@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            color: #334155;
+        }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown-menu.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #65a30d; 
+            transform: translateY(-2px);
+        }
+        .hero-animation {
+            animation: fadeInScale 1.5s ease-out;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .card-hover-effect {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-20">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://placehold.co/40x40/65a30d/ffffff?text=U" alt="University Logo" class="rounded-full shadow-md">
+                <span class="text-2xl font-extrabold text-gray-900">University Portal</span>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <!-- Main Navigation Links (Desktop) -->
+            <div id="nav-menu" class="hidden md:flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+                <a href="#" class="nav-link text-gray-600 hover:text-green-600 font-medium">Home</a>
+                <!-- Dropdown 1: Academics -->
+                <div class="relative group">
+                    <button class="nav-link dropdown-button flex items-center text-gray-600 hover:text-green-600 font-medium">
+                        Academics
+                        <svg class="ml-2 w-4 h-4 transition-transform transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute hidden md:group-hover:block bg-white/90 backdrop-blur-md shadow-lg rounded-lg w-48 mt-2 py-2 z-10 animate-fade-in-down">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Admissions</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Courses</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Syllabus</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Departments</a>
+                    </div>
+                </div>
+                <!-- Dropdown 2: Student Life -->
+                <div class="relative group">
+                    <button class="nav-link dropdown-button flex items-center text-gray-600 hover:text-green-600 font-medium">
+                        Student Life
+                        <svg class="ml-2 w-4 h-4 transition-transform transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute hidden md:group-hover:block bg-white/90 backdrop-blur-md shadow-lg rounded-lg w-48 mt-2 py-2 z-10 animate-fade-in-down">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Clubs & Orgs</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Campus Events</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md mx-2 my-1">Housing</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-link text-gray-600 hover:text-green-600 font-medium">Research</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-green-600 font-medium">About Us</a>
+                <a href="#" class="nav-link px-6 py-2 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors duration-300 transform hover:scale-105 shadow-md">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24 bg-white text-center shadow-inner">
+        <div class="container mx-auto px-6">
+            <div class="hero-animation">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-gray-900">Empowering Minds, Shaping Futures</h1>
+                <p class="text-lg md:text-xl font-light max-w-4xl mx-auto mb-8 text-gray-600">
+                    A world-class institution dedicated to innovation, learning, and community. Join us on a journey of discovery.
+                </p>
+                <a href="#" class="px-8 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-colors duration-300 transform hover:scale-105 inline-block shadow-lg">Apply Now</a>
+            </div>
+        </div>
+    </main>
+
+    <div class="container mx-auto px-6 py-16">
+        <section class="mb-16">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-800">Explore Our Programs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover-effect border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-3 text-green-700">Undergraduate</h3>
+                    <p class="text-gray-600 mb-4">Discover our wide range of Bachelor's degree programs across various disciplines.</p>
+                    <a href="#" class="font-semibold text-green-600 hover:underline">View Programs &rarr;</a>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover-effect border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-3 text-green-700">Postgraduate</h3>
+                    <p class="text-gray-600 mb-4">Advance your career with our specialized Master's and professional programs.</p>
+                    <a href="#" class="font-semibold text-green-600 hover:underline">View Programs &rarr;</a>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover-effect border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-3 text-green-700">Research</h3>
+                    <p class="text-gray-600 mb-4">Contribute to groundbreaking discoveries in our cutting-edge research facilities.</p>
+                    <a href="#" class="font-semibold text-green-600 hover:underline">Learn More &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-800">Latest News & Events</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <ul class="space-y-6">
+                    <li class="border-b pb-4 last:border-b-0">
+                        <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center justify-between hover:text-green-600 transition-colors duration-300">
+                            <span class="font-medium flex-1 mb-2 sm:mb-0">Upcoming career fair on November 15th.</span>
+                            <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">NOV 15, 2024</span>
+                        </a>
+                    </li>
+                    <li class="border-b pb-4 last:border-b-0">
+                        <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center justify-between hover:text-green-600 transition-colors duration-300">
+                            <span class="font-medium flex-1 mb-2 sm:mb-0">New student orientation schedule released.</span>
+                            <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">OCT 28, 2024</span>
+                        </a>
+                    </li>
+                    <li class="border-b pb-4 last:border-b-0">
+                        <a href="#" class="flex flex-col sm:flex-row items-start sm:items-center justify-between hover:text-green-600 transition-colors duration-300">
+                            <span class="font-medium flex-1 mb-2 sm:mb-0">University ranked top in national research.</span>
+                            <span class="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">OCT 20, 2024</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-800 text-gray-300 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <!-- About Us -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">About Us</h3>
+                    <p class="text-sm leading-relaxed">
+                        We are a leading institution committed to academic excellence, student success, and innovation in research.
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Admissions</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Academic Calendar</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Careers</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Contact</h3>
+                    <address class="text-sm not-italic leading-relaxed">
+                        123 University Drive<br>
+                        City, State, Country<br>
+                        Email: <a href="mailto:info@university.edu" class="hover:text-green-400 transition-colors duration-300">info@university.edu</a><br>
+                        Phone: (123) 456-7890
+                    </address>
+                </div>
+            </div>
+            <div class="mt-12 text-center text-xs border-t border-gray-700 pt-8">
+                &copy; 2024 University Portal. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dropdown Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownButtons = document.querySelectorAll('.dropdown-button');
+            const navMenu = document.getElementById('nav-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+            // Toggle mobile menu visibility
+            mobileMenuButton.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('flex');
+            });
+
+            // Handle dropdown toggle for desktop and mobile
+            dropdownButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Prevent default behavior if on mobile and a link
+                    if (window.innerWidth < 768) {
+                      e.preventDefault();
+                    }
+                    
+                    const dropdownMenu = button.nextElementSibling;
+                    if (dropdownMenu.classList.contains('dropdown-menu')) {
+                        // Close other open dropdowns
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            if (menu !== dropdownMenu) {
+                                menu.classList.remove('active');
+                            }
+                        });
+                        // Toggle the clicked dropdown
+                        dropdownMenu.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            window.addEventListener('click', (e) => {
+                if (!e.target.closest('.relative.group')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

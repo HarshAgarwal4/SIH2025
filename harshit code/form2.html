@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Registration Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-indigo-900 text-white py-4 shadow">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6">
+      <div class="flex items-center space-x-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Rajasthan_Technical_University_logo.png/200px-Rajasthan_Technical_University_logo.png" class="h-12" alt="University Logo">
+        <h1 class="text-2xl font-bold">University / DTE College Registration</h1>
+      </div>
+      <div class="text-sm">
+        Date: <span id="todayDate"></span>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    // Show current date
+    document.getElementById('todayDate').textContent = new Date().toLocaleDateString();
+  </script>
+
+  <!-- Stepper -->
+  <div class="max-w-4xl mx-auto mt-10">
+    <div class="flex justify-between items-center">
+      <div class="flex-1 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-indigo-900 text-white flex items-center justify-center">1</div>
+        <p class="mt-2 text-sm font-medium">College Info</p>
+      </div>
+      <div class="flex-1 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">2</div>
+        <p class="mt-2 text-sm font-medium">Approvals</p>
+      </div>
+      <div class="flex-1 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">3</div>
+        <p class="mt-2 text-sm font-medium">Academics</p>
+      </div>
+      <div class="flex-1 text-center">
+        <div class="w-10 h-10 mx-auto rounded-full bg-gray-300 text-gray-600 flex items-center justify-center">4</div>
+        <p class="mt-2 text-sm font-medium">Documents</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Step Form -->
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-8">
+
+    <!-- Step 1: College Info -->
+    <div id="step1" class="step">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">🏫 College Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-medium">College Name</label>
+          <input type="text" class="w-full border p-2 rounded" required>
+        </div>
+        <div>
+          <label class="block font-medium">College Type</label>
+          <select class="w-full border p-2 rounded">
+            <option>Engineering</option>
+            <option>Polytechnic</option>
+            <option>Management</option>
+            <option>Pharmacy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium">Ownership Type</label>
+          <select class="w-full border p-2 rounded">
+            <option>Government</option>
+            <option>Private</option>
+            <option>Aided</option>
+            <option>Deemed</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium">Year of Establishment</label>
+          <input type="number" class="w-full border p-2 rounded" placeholder="YYYY">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block font-medium">Full Address</label>
+          <textarea class="w-full border p-2 rounded" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="text-right mt-6">
+        <button onclick="nextStep(2)" type="button" class="bg-indigo-900 text-white px-6 py-2 rounded hover:bg-indigo-700">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Approvals -->
+    <div id="step2" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📑 Approvals</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-medium">AICTE / PCI / COA Approval No.</label>
+          <input type="text" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">Approval Date</label>
+          <input type="date" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">University for Affiliation</label>
+          <input type="text" class="w-full border p-2 rounded" placeholder="Example: RTU">
+        </div>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button onclick="nextStep(1)" type="button" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button onclick="nextStep(3)" type="button" class="bg-indigo-900 text-white px-6 py-2 rounded hover:bg-indigo-700">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Academics -->
+    <div id="step3" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📚 Academic Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-medium">Departments</label>
+          <input type="text" class="w-full border p-2 rounded" placeholder="CSE, ECE, Mechanical...">
+        </div>
+        <div>
+          <label class="block font-medium">Courses Offered</label>
+          <input type="text" class="w-full border p-2 rounded" placeholder="B.Tech, MBA, etc.">
+        </div>
+        <div>
+          <label class="block font-medium">Intake Capacity (per course)</label>
+          <input type="text" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">Total Faculty Strength</label>
+          <input type="number" class="w-full border p-2 rounded">
+        </div>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button onclick="nextStep(2)" type="button" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button onclick="nextStep(4)" type="button" class="bg-indigo-900 text-white px-6 py-2 rounded hover:bg-indigo-700">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Documents -->
+    <div id="step4" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📂 Upload Documents</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="block font-medium">Trust Registration Certificate</label>
+          <input type="file" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">AICTE / PCI / COA Approval Letter</label>
+          <input type="file" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">Land & Building Safety Certificate</label>
+          <input type="file" class="w-full border p-2 rounded">
+        </div>
+        <div>
+          <label class="block font-medium">Fire Safety Certificate</label>
+          <input type="file" class="w-full border p-2 rounded">
+        </div>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button onclick="nextStep(3)" type="button" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="submit" class="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800">✅ Submit Registration</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JS to handle stepper -->
+  <script>
+    function nextStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('step' + step).classList.remove('hidden');
+
+      // Update stepper circles
+      const circles = document.querySelectorAll('.flex-1 div.w-10');
+      circles.forEach((c, i) => {
+        if (i < step) {
+          c.classList.remove('bg-gray-300', 'text-gray-600');
+          c.classList.add('bg-indigo-900', 'text-white');
+        } else {
+          c.classList.remove('bg-indigo-900', 'text-white');
+          c.classList.add('bg-gray-300', 'text-gray-600');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

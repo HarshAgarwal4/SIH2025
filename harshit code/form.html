@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Affiliation Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-indigo-900 text-white py-4 shadow">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6">
+      <h1 class="text-2xl font-bold">University College Affiliation Portal</h1>
+      <div>Date: <span id="todayDate"></span></div>
+    </div>
+  </header>
+
+  <script>
+    document.getElementById('todayDate').textContent = new Date().toLocaleDateString();
+  </script>
+
+  <!-- Stepper -->
+  <div class="max-w-6xl mx-auto mt-6">
+    <div class="flex justify-between items-center text-sm font-medium">
+      <span id="circle1" class="px-3 py-1 rounded-full bg-indigo-900 text-white">1. College Info</span>
+      <span id="circle2" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">2. Management</span>
+      <span id="circle3" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">3. Principal</span>
+      <span id="circle4" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">4. Infrastructure</span>
+      <span id="circle5" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">5. Academics</span>
+      <span id="circle6" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">6. Library</span>
+      <span id="circle7" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">7. Compliance</span>
+      <span id="circle8" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">8. Financial</span>
+      <span id="circle9" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">9. Documents</span>
+      <span id="circle10" class="px-3 py-1 rounded-full bg-gray-300 text-gray-600">10. Declaration</span>
+    </div>
+  </div>
+
+  <!-- Multi-Step Form -->
+  <form class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-6 space-y-8">
+
+    <!-- Step 1: College Info -->
+    <div id="step1" class="step">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">🏫 College Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="College Name" class="border p-2 rounded">
+        <input placeholder="Short Name / Abbreviation" class="border p-2 rounded">
+        <input placeholder="Year of Establishment" type="number" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Government</option><option>Private</option><option>Aided</option><option>Self-financed</option></select>
+        <select class="border p-2 rounded"><option>Fresh</option><option>Continuation</option><option>Extension</option></select>
+        <input placeholder="Category of College" class="border p-2 rounded">
+        <textarea placeholder="Address" rows="2" class="border p-2 rounded md:col-span-2"></textarea>
+        <input placeholder="City" class="border p-2 rounded">
+        <input placeholder="District" class="border p-2 rounded">
+        <input placeholder="State" class="border p-2 rounded">
+        <input placeholder="Pincode" class="border p-2 rounded">
+        <input placeholder="Email ID" type="email" class="border p-2 rounded">
+        <input placeholder="Contact Numbers" class="border p-2 rounded">
+        <input placeholder="Official Website" type="url" class="border p-2 rounded md:col-span-2">
+      </div>
+      <div class="text-right mt-6">
+        <button type="button" onclick="nextStep(2)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Management -->
+    <div id="step2" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">👥 Management / Trust / Society Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Name of Society/Trust/Company" class="border p-2 rounded">
+        <input placeholder="Type of Registration" class="border p-2 rounded">
+        <input placeholder="Registration No. & Date" class="border p-2 rounded">
+        <textarea placeholder="Registered Office Address" class="border p-2 rounded md:col-span-2"></textarea>
+        <input placeholder="Chairman/President Name" class="border p-2 rounded">
+        <input placeholder="Chairman Contact & Email" class="border p-2 rounded">
+        <input placeholder="Secretary/Manager Name" class="border p-2 rounded">
+        <input placeholder="Secretary Contact & Email" class="border p-2 rounded">
+        <input placeholder="PAN Number" class="border p-2 rounded">
+        <input placeholder="GST Number" class="border p-2 rounded">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(1)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(3)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Principal -->
+    <div id="step3" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">🎓 Principal / Head of Institution</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Full Name" class="border p-2 rounded">
+        <input placeholder="Designation" class="border p-2 rounded">
+        <input placeholder="Qualification" class="border p-2 rounded">
+        <input placeholder="Teaching Experience (Years)" type="number" class="border p-2 rounded">
+        <input placeholder="Administrative Experience (Years)" type="number" class="border p-2 rounded">
+        <input placeholder="Date of Appointment" type="date" class="border p-2 rounded">
+        <input placeholder="Contact Number" class="border p-2 rounded">
+        <input placeholder="Email ID" type="email" class="border p-2 rounded">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(2)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(4)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Infrastructure -->
+    <div id="step4" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">🏗️ Infrastructure Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Total Land Area" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Owned</option><option>Leased</option></select>
+        <input placeholder="Total Built-up Area" class="border p-2 rounded">
+        <input placeholder="Number of Classrooms" class="border p-2 rounded">
+        <input placeholder="Number of Laboratories" class="border p-2 rounded">
+        <input placeholder="Seminar Halls" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Yes</option><option>No</option></select>
+        <input placeholder="Hostel Capacity (Boys)" class="border p-2 rounded">
+        <input placeholder="Hostel Capacity (Girls)" class="border p-2 rounded">
+      </div>
+      <div class="mt-4">
+        <label class="font-medium block mb-2">Facilities</label>
+        <div class="space-x-4">
+          <label><input type="checkbox"> WiFi</label>
+          <label><input type="checkbox"> Playground</label>
+          <label><input type="checkbox"> Auditorium</label>
+          <label><input type="checkbox"> Cafeteria</label>
+          <label><input type="checkbox"> Transport</label>
+        </div>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(3)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(5)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Academics -->
+    <div id="step5" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📚 Academic Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Courses Applied for Affiliation" class="border p-2 rounded">
+        <input placeholder="Departments & Proposed Intake" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Regular</option><option>Evening</option><option>Distance</option></select>
+        <textarea placeholder="Faculty Details (Attach list separately)" rows="3" class="border p-2 rounded md:col-span-2"></textarea>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(4)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(6)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 6: Library -->
+    <div id="step6" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📖 Library Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Total Books" type="number" class="border p-2 rounded">
+        <input placeholder="Number of Titles" type="number" class="border p-2 rounded">
+        <input placeholder="Number of Journals" type="number" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Yes</option><option>No</option></select>
+        <input placeholder="E-Resources Subscription" class="border p-2 rounded md:col-span-2">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(5)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(7)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 7: Compliance -->
+    <div id="step7" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">✔️ Compliance & Accreditation</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="AICTE Approval Number" class="border p-2 rounded">
+        <select class="border p-2 rounded"><option>Yes</option><option>No</option></select>
+        <input placeholder="NAAC Accreditation Grade & Validity" class="border p-2 rounded">
+        <input placeholder="NBA Accreditation" class="border p-2 rounded">
+        <label><input type="checkbox"> Fire Safety Certificate</label>
+        <label><input type="checkbox"> Building Safety Certificate</label>
+        <label><input type="checkbox"> Environmental Clearance</label>
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(6)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(8)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 8: Financial -->
+    <div id="step8" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">💰 Financial Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <label><input type="checkbox"> Audited Balance Sheet (Last 3 years)</label>
+        <label><input type="checkbox"> Bank Solvency Certificate</label>
+        <input placeholder="Endowment Fund Proof" class="border p-2 rounded">
+        <input placeholder="Reserve Fund Proof" class="border p-2 rounded">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(7)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(9)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 9: Documents -->
+    <div id="step9" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📂 Document Uploads</h2>
+      <div class="space-y-4">
+        <input type="file" class="border p-2 rounded w-full">
+        <input type="file" class="border p-2 rounded w-full">
+        <input type="file" class="border p-2 rounded w-full">
+        <input type="file" class="border p-2 rounded w-full">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(8)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="button" onclick="nextStep(10)" class="bg-indigo-900 text-white px-6 py-2 rounded">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 10: Declaration -->
+    <div id="step10" class="step hidden">
+      <h2 class="text-xl font-bold text-indigo-900 mb-4">📝 Declaration</h2>
+      <p class="mb-4">I hereby declare that the information furnished is true and correct. I agree to follow all University and Government regulations.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input placeholder="Name of Head of Institution" class="border p-2 rounded">
+        <input placeholder="Place" class="border p-2 rounded">
+        <input type="date" class="border p-2 rounded">
+      </div>
+      <div class="flex justify-between mt-6">
+        <button type="button" onclick="nextStep(9)" class="bg-gray-400 text-white px-6 py-2 rounded">← Back</button>
+        <button type="submit" class="bg-green-700 text-white px-6 py-2 rounded">✅ Submit</button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- JS to switch steps -->
+  <script>
+    function nextStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('step' + step).classList.remove('hidden');
+
+      for (let i = 1; i <= 10; i++) {
+        const circle = document.getElementById('circle' + i);
+        if (i <= step) {
+          circle.classList.remove('bg-gray-300', 'text-gray-600');
+          circle.classList.add('bg-indigo-900', 'text-white');
+        } else {
+          circle.classList.remove('bg-indigo-900', 'text-white');
+          circle.classList.add('bg-gray-300', 'text-gray-600');
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
