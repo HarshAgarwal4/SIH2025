@@ -29,26 +29,26 @@ const GlobalContext = ({ children }) => {
     fetchUser()
   },[])
 
-//   async function logout() {
-//     try {
-//       let res = await axios.post('/logout')
-//       if (res.status === 200) {
-//         if (res.data.status === 1) {
-//           setUser(null)
-//           await fetchUser()
-//         }
-//         else {
-//           setUser(null)
-//         }
-//       }
-//     } catch (err) {
-//       setUser(null);
-//     }
-//     setOrders([])
-//   }
+  async function logout() {
+    try {
+      let res = await axios.post('/logout')
+      if (res.status === 200) {
+        if (res.data.status === 1) {
+          setUser(null)
+          await fetchUser()
+        }
+        else {
+          setUser(null)
+        }
+      }
+    } catch (err) {
+      setUser(null);
+    }
+    setOrders([])
+  }
 
   return (
-    <AppContext.Provider value={{user , setUser  , fetchUser }}>
+    <AppContext.Provider value={{user , setUser  , fetchUser , logout }}>
       {children}
     </AppContext.Provider>
   );

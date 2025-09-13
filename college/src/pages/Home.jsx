@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../context/GlobalContext";
 
 const Home = () => {
-    const { user } = useContext(AppContext)
+    const { user , logout } = useContext(AppContext)
     const [open, setOpen] = useState(false);
 
     return (
@@ -40,8 +40,8 @@ const Home = () => {
                                             Profile
                                         </Link>
                                         <button
-                                            onClick={() => {
-                                                logout();
+                                            onClick={async () => {
+                                                await logout();
                                                 setOpen(false);
                                             }}
                                             className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition"

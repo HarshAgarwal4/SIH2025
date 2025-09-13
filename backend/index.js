@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv'
 import { userRoutes } from './college/routes/user.js';
 import { studentRouter } from './college/routes/student.js';
+import { logoutRouter } from './college/routes/logout.js';
 dotenv.config()
 
 const app = express()
@@ -26,6 +27,7 @@ app.get('/' , (re,res) => {
 })
 app.use('/' , userRoutes)
 app.use('/' , studentRouter)
+app.use('/' , logoutRouter)
 
 mongoose.connect(process.env.DB_URL, {
     dbName: "DTE_ERP_SIH",
