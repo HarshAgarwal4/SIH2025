@@ -3,7 +3,12 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 async function setUser(user) {
-    const payload = {}
+    const payload = {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+    }
     try{
         const token = await jwt.sign(payload , process.env.JWT_SECRET)
         return token

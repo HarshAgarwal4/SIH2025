@@ -1,4 +1,4 @@
-import student from "../models/student.js";
+import student from "../models/students.js";
 
 async function registerStudent(req,res){
     let {name , fatherName , motherName , studentemail , parentEmail , studentContact , parentContact , Paddress , Caddress , DOB , ScoreOf10th , ScoreOf12th , appliedCourse , fatherOccupation , aadharCardNo , Hostel , Transport} = req.body;

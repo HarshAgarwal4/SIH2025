@@ -1,14 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import CollegeRegistrationForm from './components/CollegeForm'
+import { RouterProvider } from 'react-router-dom'
+import router from './services/Routes.jsx'
+import {ToastContainer} from 'react-toastify'
+import "./toast.css"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-   <>
-    <CollegeRegistrationForm />
-   </>
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer 
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+      />
+    </>
   )
 }
 

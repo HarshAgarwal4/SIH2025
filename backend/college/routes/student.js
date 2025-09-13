@@ -4,4 +4,4 @@ let studentRouter = express.Router();
 
 studentRouter.post('/student/register' , registerStudent);
 
-export default studentRouter;
+export {studentRouter};

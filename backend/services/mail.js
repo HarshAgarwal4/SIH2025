@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer'
 import dotenv from 'dotenv'
 import e from 'express'
-import { text } from 'body-parser'
 dotenv.config()
 
 const transporter = nodemailer.createTransport({
