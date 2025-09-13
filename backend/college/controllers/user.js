@@ -5,7 +5,7 @@ import { TempUserModel } from "../models/user.js"
 
 async function signUp(req, res) {
     let { name, email, otp, password } = req.body
-    console.log(email , otp , name , password)
+    console.log(email, otp, name, password)
     try {
         let r = verifyOTP(email, otp)
         if (!r) return res.send({ status: 2, msg: "Invalid OTP" })
@@ -29,14 +29,15 @@ async function login(req, res) {
         console.log(findUser)
         if (!findUser) return res.send({ status: 3, msg: "User not found" })
         if (findUser) {
-            let r = await verifyPassword(password , findUser.password)
+            let r = await verifyPassword(password, findUser.password)
             if (!r) return res.send({ status: 2, msg: "Invalid email or password" })
             else {
                 let token = await setUser(findUser)
                 res.cookie('UID', token, {
-                    httpOnly: false,
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: 'none',
                     maxAge: 7 * 24 * 60 * 60 * 1000,
-                    secure: false
                 })
                 return res.send({ status: 1, msg: "Login succesfull" })
             }
