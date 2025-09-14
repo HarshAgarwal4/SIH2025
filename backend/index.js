@@ -7,6 +7,7 @@ import dotenv from 'dotenv'
 import { userRoutes } from './college/routes/user.js';
 import { studentRouter } from './college/routes/student.js';
 import { logoutRouter } from './college/routes/logout.js';
+import { chatBotRouter } from './college/routes/Chatbot.js';
 dotenv.config()
 
 const app = express()
@@ -15,7 +16,7 @@ console.log(process.env.FRONTEND_URL)
 app.use(express.json())
 app.use(cors(
     {
-        origin: [process.env.FRONTEND_URL],
+        origin: [process.env.FRONTEND_URL , process.env.ADMIN_URL],
         credentials: true
     }
 ))
@@ -28,6 +29,7 @@ app.get('/' , (re,res) => {
 app.use('/' , userRoutes)
 app.use('/' , studentRouter)
 app.use('/' , logoutRouter)
+app.use('/' , chatBotRouter)
 
 mongoose.connect(process.env.DB_URL, {
     dbName: "DTE_ERP_SIH",

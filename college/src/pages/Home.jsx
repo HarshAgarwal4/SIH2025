@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../context/GlobalContext";
+import Chatbot from "../components/ChatBot";
 
 const Home = () => {
     const { user , logout } = useContext(AppContext)
@@ -126,6 +127,7 @@ const Home = () => {
                 </div>
             </section>
 
+            <Chatbot />
             {/* About Section */}
             <section id="about" className="bg-gray-50 py-16 px-6">
                 <h3 className="text-3xl font-bold text-center text-blue-700 mb-8">

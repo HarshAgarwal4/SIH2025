@@ -2,24 +2,26 @@ import mongoose from 'mongoose'
 import { hashPassword } from '../../services/encyption.js';
 
 const TempUserSchema = new mongoose.Schema({
-    name:{
-        type:String,
+    name: {
+        type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    role: {
-        type: String,
-        enum: ['normal' , 'student' , 'staff' , 'admin'],
-        default: 'normal'
-    }
+    role: [
+        {
+            type: String,
+            default: 'normal',
+            enum: ['normal' , 'student' , 'library' , 'account' , 'hostel' , 'admin']
+        }
+    ]
 },
 {
     timestamps: true
@@ -33,6 +35,6 @@ TempUserSchema.pre('save', async function (next) {
     next();
 });
 
-const TempUserModel = mongoose.model('TempUser' , TempUserSchema);
+const TempUserModel = mongoose.model('TempUser', TempUserSchema);
 
-export {TempUserModel}
+export { TempUserModel }
